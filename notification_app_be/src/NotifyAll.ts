@@ -1,3 +1,4 @@
+import './env'
 import { Pool } from 'pg'
 import express from 'express'
 import Log from 'logging-middleware'

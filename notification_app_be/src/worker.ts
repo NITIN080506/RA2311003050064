@@ -1,3 +1,4 @@
+import './env'
 import { Pool } from 'pg'
 import Log from 'logging-middleware'
 
@@ -91,7 +92,8 @@ async function workerLoop() {
 if (require.main === module) {
   Log('backend', 'info', 'service', 'starting notify_all worker').catch(() => {})
   workerLoop().catch(async (err) => {
-    await Log('backend', 'fatal', 'service', `worker crashed: ${(err as any).message}`)
+    console.log(`worker crashed: ${(err as any).message}`)
+    Log('backend', 'fatal', 'service', `worker crashed: ${(err as any).message}`).catch(() => {})
     process.exit(1)
   })
 }

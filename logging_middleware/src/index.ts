@@ -78,8 +78,16 @@ export async function Log(
     headers.Authorization = `Bearer ${apiKey}`
   }
   const payload = { stack, level, package: pkg, message }
-  const resp = await axios.post(url, payload, { headers })
-  return resp.data
+  try {
+    const resp = await axios.post(url, payload, { headers })
+    return resp.data
+  } catch (err) {
+    const error = err as { response?: { status?: number; data?: unknown }; message?: string }
+    console.warn(
+      `Log delivery failed${error.response?.status ? ` (${error.response.status})` : ''}: ${error.message || 'unknown error'}`
+    )
+    return undefined
+  }
 }
 
 export default Log
