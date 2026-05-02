@@ -1,0 +1,27 @@
+{
+  "name": "notification-app-backend",
+  "version": "1.0.0",
+  "description": "Campus Notifications microservice with logging, async jobs, and Priority Inbox",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/app.ts",
+    "worker": "ts-node src/worker.ts"
+  },
+  "keywords": ["notifications", "microservice", "async", "backend"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.0",
+    "axios": "^1.4.0",
+    "logging-middleware": "file:../logging_middleware"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6",
+    "ts-node": "^10.9.1",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.3.1",
+    "@types/pg": "^8.10.6"
+  }
+}
